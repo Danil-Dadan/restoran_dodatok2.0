@@ -1,0 +1,17 @@
+{% extends 'restaurant/base.html' %}
+{% block content %}
+<h2>Корзина</h2>
+{% if cart_items %}
+  <ul>
+    {% for row in cart_items %}
+      <li>{{ row.item.name }} x{{ row.quantity }} = {{ row.line_total }}
+        <a href="{% url 'cart_remove' row.item.pk %}">Удалить</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p>Итого: {{ total }}</p>
+  <a href="{% url 'checkout' %}">Оформить заказ</a>
+{% else %}
+  <p>Корзина пуста.</p>
+{% endif %}
+{% endblock %}

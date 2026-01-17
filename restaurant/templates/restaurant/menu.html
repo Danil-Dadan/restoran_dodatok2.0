@@ -1,0 +1,17 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Меню{% endblock %}
+{% block content %}
+<h2>Меню</h2>
+<ul>
+  {% for item in items %}
+    <li>
+      <a href="{% url 'item_detail' item.pk %}">{{ item.name }}</a> — {{ item.price }}
+      <form action="{% url 'cart_add' item.pk %}" method="post" style="display:inline">{% csrf_token %}
+        <button type="submit">Добавить</button>
+      </form>
+    </li>
+  {% empty %}
+    <li>Пока нет блюд.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
