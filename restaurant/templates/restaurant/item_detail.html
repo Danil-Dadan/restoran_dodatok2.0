@@ -3,7 +3,7 @@
 <h2>{{ item.name }}</h2>
 <p>{{ item.description }}</p>
 <p>Цена: {{ item.price }}</p>
-<p>{{ menu.image.url }}</p>
+<img src="{{ item.image.url }}" alt="Зображення коментаря" style="max-width: 200px;">
 <form action="{% url 'cart_add' item.pk %}" method="post">{% csrf_token %}
   <button type="submit">Добавить в корзину</button>
 </form>
